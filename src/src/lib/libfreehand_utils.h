@@ -10,11 +10,11 @@
 #ifndef __LIBFREEHAND_UTILS_H__
 #define __LIBFREEHAND_UTILS_H__
 
+#include <vector>
 #include <stdio.h>
 #include <string>
 #include <math.h>
-#include <libwpd/libwpd.h>
-#include <libwpd-stream/libwpd-stream.h>
+#include <librevenge/librevenge.h>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -78,12 +78,18 @@ typedef __int64 int64_t;
 namespace libfreehand
 {
 
-uint8_t readU8(WPXInputStream *input);
-uint16_t readU16(WPXInputStream *input);
-uint32_t readU32(WPXInputStream *input);
-int8_t readS8(WPXInputStream *input);
-int16_t readS16(WPXInputStream *input);
-int32_t readS32(WPXInputStream *input);
+uint8_t readU8(librevenge::RVNGInputStream *input);
+uint16_t readU16(librevenge::RVNGInputStream *input);
+uint32_t readU32(librevenge::RVNGInputStream *input);
+int8_t readS8(librevenge::RVNGInputStream *input);
+int16_t readS16(librevenge::RVNGInputStream *input);
+int32_t readS32(librevenge::RVNGInputStream *input);
+
+void writeU16(librevenge::RVNGBinaryData &buffer, const int value);
+void writeU32(librevenge::RVNGBinaryData &buffer, const int value);
+
+void _appendUTF16(librevenge::RVNGString &text, std::vector<unsigned short> &characters);
+void _appendMacRoman(librevenge::RVNGString &text, unsigned char character);
 
 class EndOfStreamException
 {

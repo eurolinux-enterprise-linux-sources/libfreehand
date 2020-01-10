@@ -6,8 +6,8 @@ AC_PREREQ([2.65])
 # Version informations
 # ====================
 m4_define([libfreehand_version_major],[0])
-m4_define([libfreehand_version_minor],[0])
-m4_define([libfreehand_version_micro],[0])
+m4_define([libfreehand_version_minor],[1])
+m4_define([libfreehand_version_micro],[1])
 m4_define([libfreehand_version],[libfreehand_version_major.libfreehand_version_minor.libfreehand_version_micro])
 
 # =============
@@ -54,24 +54,37 @@ else
 fi
 AC_SUBST(GPERF)
 
-# ===========
-# Find libwpd
-# ===========
-PKG_CHECK_MODULES([WPD],[
-	libwpd-0.9
-	libwpd-stream-0.9
+# ===============
+# Find librevenge
+# ===============
+PKG_CHECK_MODULES([REVENGE],[
+	librevenge-0.0
 ])
-AC_SUBST(WPD_CFLAGS)
-AC_SUBST(WPD_LIBS)
+AC_SUBST([REVENGE_CFLAGS])
+AC_SUBST([REVENGE_LIBS])
 
-# ===========
-# Find libwpg
-# ===========
-PKG_CHECK_MODULES([WPG],[
-	libwpg-0.2
+
+# =====
+# Tools
+# =====
+AC_ARG_ENABLE([tools],
+	[AS_HELP_STRING([--disable-tools], [Build conversion tools])],
+	[enable_tools="$enableval"],
+	[enable_tools=yes]
+)
+AS_IF([test "x$enable_tools" = "xyes"], [
+	PKG_CHECK_MODULES([REVENGE_STREAM],[
+		librevenge-stream-0.0
+	])
+	PKG_CHECK_MODULES([REVENGE_GENERATORS],[
+		librevenge-generators-0.0
+	])
 ])
-AC_SUBST(WPG_CFLAGS)
-AC_SUBST(WPG_LIBS)
+AC_SUBST([REVENGE_STREAM_CFLAGS])
+AC_SUBST([REVENGE_STREAM_LIBS])
+AC_SUBST([REVENGE_GENERATORS_CFLAGS])
+AC_SUBST([REVENGE_GENERATORS_LIBS])
+AM_CONDITIONAL(BUILD_TOOLS, [test "x$enable_tools" = "xyes"])
 
 # =========
 # Find zlib
@@ -84,6 +97,34 @@ PKG_CHECK_MODULES([ZLIB],[zlib],[],[
 ])
 AC_SUBST(ZLIB_CFLAGS)
 AC_SUBST(ZLIB_LIBS)
+
+# ========
+# Find icu
+# ========
+AS_IF([test "${ICU_CFLAGS+set}" = set],[
+	ICU_CFLAGS_overriden=yes],[
+	ICU_CFLAGS_overriden=no])
+PKG_CHECK_MODULES([ICU],[icu-i18n],[
+	AS_IF([test "${ICU_CFLAGS_overriden}" = no], [
+		ICU_CFLAGS="${ICU_CFLAGS} `${PKG_CONFIG} icu-i18n --variable=CXXFLAGS`"])
+	], [
+	AC_PATH_PROG([ICU_CONFIG],[icu-config])
+	AC_MSG_CHECKING([ICU installation])
+	AS_IF([${ICU_CONFIG} --cflags >/dev/null 2>&1],[
+		ICU_CFLAGS=`${ICU_CONFIG} --cppflags-searchpath --cxxflags`
+		AC_MSG_RESULT([found])],[
+		AC_MSG_ERROR([libicu config program icu-config not found])])]
+)
+AC_SUBST(ICU_CFLAGS)
+
+# ==========
+# Find lcms2
+# ==========
+PKG_CHECK_MODULES([LCMS2],[
+	lcms2
+])
+AC_SUBST([LCMS2_CFLAGS])
+AC_SUBST([LCMS_LIBS])
 
 # =================================
 # Libtool/Version Makefile settings
@@ -111,11 +152,13 @@ AS_CASE([$host],
 		LIBFREEHAND_WIN32_RESOURCE=libfreehand-win32res.lo
 		FH2RAW_WIN32_RESOURCE=fh2raw-win32res.lo
 		FH2SVG_WIN32_RESOURCE=fh2svg-win32res.lo
+		FH2TEXT_WIN32_RESOURCE=fh2text-win32res.lo
 	], [
 		native_win32=no
 		LIBFREEHAND_WIN32_RESOURCE=
 		FH2RAW_WIN32_RESOURCE=
 		FH2SVG_WIN32_RESOURCE=
+		FH2TEXT_WIN32_RESOURCE=
 	]
 )
 AC_MSG_RESULT([$native_win32])
@@ -123,6 +166,7 @@ AM_CONDITIONAL(OS_WIN32, [test "x$native_win32" = "xyes"])
 AC_SUBST(LIBFREEHAND_WIN32_RESOURCE)
 AC_SUBST(FH2RAW_WIN32_RESOURCE)
 AC_SUBST(FH2SVG_WIN32_RESOURCE)
+AC_SUBST(FH2TEXT_WIN32_RESOURCE)
 
 AC_MSG_CHECKING([for Win32 platform in general])
 AS_CASE([$host],
@@ -132,6 +176,24 @@ AS_CASE([$host],
 AC_MSG_RESULT([$platform_win32])
 AM_CONDITIONAL([PLATFORM_WIN32], [test "x$platform_win32" = "xyes"])
 
+AS_IF([test $platform_win32 = yes],
+    [],
+    [
+        AC_MSG_CHECKING([for -fvisibility=hidden compiler flag])
+        saved_CXXFLAGS="$CXXFLAGS"
+        CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
+        AC_TRY_COMPILE([], [],
+            [
+                AC_MSG_RESULT([yes])
+                CXXFLAGS="$CXXFLAGS -DLIBFREEHAND_VISIBILITY"
+            ],
+            [
+                AC_MSG_RESULT([no])
+                CXXFLAGS="$saved_CXXFLAGS"
+            ]
+        )
+    ]
+)
 
 # ================
 # Check for cflags
@@ -252,6 +314,8 @@ src/conv/raw/Makefile
 src/conv/raw/fh2raw.rc
 src/conv/svg/Makefile
 src/conv/svg/fh2svg.rc
+src/conv/text/Makefile
+src/conv/text/fh2text.rc
 src/lib/Makefile
 src/lib/libfreehand.rc
 inc/Makefile
@@ -272,6 +336,7 @@ AC_MSG_NOTICE([
 Build configuration:
 	debug:           ${enable_debug}
 	docs:            ${build_docs}
+	tools:           ${enable_tools}
 	werror:          ${enable_werror}
 ==============================================================================
 ])

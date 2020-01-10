@@ -1,22 +1,21 @@
-%global apiversion 0.0
+%global apiversion 0.1
 
 Name: libfreehand
-Version: 0.0.0
-Release: 3%{?dist}
+Version: 0.1.1
+Release: 1%{?dist}
 Summary: A library for import of Macromedia/Adobe FreeHand documents
 
-Group: System Environment/Libraries
 License: MPLv2.0
 URL: http://wiki.documentfoundation.org/DLP/Libraries/libfreehand
 Source: http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 
 BuildRequires: doxygen
 BuildRequires: gperf
-BuildRequires: libwpd-devel
-BuildRequires: libwpg-devel
-BuildRequires: zlib-devel
-
-Patch0: 0001-coverity-fix-memory-leak.patch
+BuildRequires: help2man
+BuildRequires: pkgconfig(icu-i18n)
+BuildRequires: pkgconfig(librevenge-0.0)
+BuildRequires: pkgconfig(lcms2)
+BuildRequires: pkgconfig(zlib)
 
 %description
 libfreehand is library providing ability to interpret and import
@@ -24,7 +23,6 @@ Macromedia/Adobe FreeHand documents into various applications.
 
 %package devel
 Summary: Development files for %{name}
-Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description devel
@@ -33,7 +31,6 @@ developing applications that use %{name}.
 
 %package doc
 Summary: Documentation of %{name} API
-Group: Documentation
 BuildArch: noarch
 
 %description doc
@@ -41,17 +38,14 @@ The %{name}-doc package contains documentation files for %{name}.
 
 %package tools
 Summary: Tools to transform Macromedia/Adobe FreeHand documents into other formats
-Group: Applications/Publishing
 Requires: %{name}%{?_isa} = %{version}-%{release}
 
 %description tools
 Tools to transform Macromedia/Adobe FreeHand documents into other formats.
-Currently supported: SVG, raw.
+Currently supported: SVG, raw, text.
 
 %prep
-%setup -q
-
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure --disable-silent-rules --disable-static --disable-werror
@@ -61,11 +55,19 @@ sed -i \
     libtool
 make %{?_smp_mflags}
 
+export LD_LIBRARY_PATH=`pwd`/src/lib/.libs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+help2man -N -n 'debug the conversion library' -o fh2raw.1 ./src/conv/raw/.libs/fh2raw
+help2man -N -n 'convert FreeHand document into SVG' -o fh2svg.1 ./src/conv/svg/.libs/fh2svg
+help2man -N -n 'convert FreeHand document into plain text' -o fh2text.1 ./src/conv/text/.libs/fh2text
+
 %install
 make install DESTDIR=%{buildroot}
 rm -f %{buildroot}/%{_libdir}/*.la
 # we install API docs directly from build
 rm -rf %{buildroot}/%{_docdir}/%{name}
+
+install -m 0755 -d %{buildroot}/%{_mandir}/man1
+install -m 0644 fh2*.1 %{buildroot}/%{_mandir}/man1
 
 %post -p /sbin/ldconfig
 
@@ -88,8 +90,18 @@ rm -rf %{buildroot}/%{_docdir}/%{name}
 %files tools
 %{_bindir}/fh2raw
 %{_bindir}/fh2svg
+%{_bindir}/fh2text
+%{_mandir}/man1/fh2raw.1*
+%{_mandir}/man1/fh2svg.1*
+%{_mandir}/man1/fh2text.1*
 
 %changelog
+* Thu Jun 11 2015 David Tardon <dtardon@redhat.com> - 0.1.1-1
+- Resolves: rhbz#1207753 rebase to 0.1.1
+
+* Fri Apr 17 2015 David Tardon <dtardon@redhat.com> - 0.1.0-1
+- Resolves: rhbz#1207753 rebase to 0.1.0
+
 * Mon Nov 04 2013 David Tardon <dtardon@redhat.com> - 0.0.0-3
 - fix memory leak
 

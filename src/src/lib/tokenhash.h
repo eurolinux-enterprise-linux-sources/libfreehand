@@ -36,12 +36,12 @@ struct fhtoken
   int tokenId;
 };
 
-#define TOTAL_KEYWORDS 115
+#define TOTAL_KEYWORDS 120
 #define MIN_WORD_LENGTH 4
 #define MAX_WORD_LENGTH 24
 #define MIN_HASH_VALUE 8
-#define MAX_HASH_VALUE 154
-/* maximum key range = 147, duplicates = 0 */
+#define MAX_HASH_VALUE 161
+/* maximum key range = 154, duplicates = 0 */
 
 class Perfect_Hash
 {
@@ -56,32 +56,32 @@ Perfect_Hash::hash (register const char *str, register unsigned int len)
 {
   static const unsigned char asso_values[] =
     {
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155,  81,  18,   1,  69,  15,
-        3,  18,  79,  40, 155, 155,   5,   1,  12,  88,
-       33, 155,  72,  42,   3,   2,  34, 155,  15, 155,
-      155, 155, 155, 155, 155, 155, 155,   6,   5,   1,
-       72,   3,   7,  19,  19,   2,   3,  86,  25,  62,
-       40,  23,  21, 155,   1,   8,   1,  53,   3,  22,
-      155,   1, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155, 155, 155, 155, 155,
-      155, 155, 155, 155, 155, 155
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162,  68,   3,   0,  37,  26,
+        2,  25,   2,  42, 162, 162,  37,   0,  27,  69,
+        7, 162,  73,  37,   2,   1,  55, 162,  43, 162,
+      162, 162, 162, 162, 162, 162, 162,   5,  17,  42,
+       67,   2,   0,  32,  10,   1,  82,  20,  28,  61,
+       44,  26,  11, 162,   0,  43,   0,  69,   8,  25,
+      162,  52, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+      162, 162, 162, 162, 162, 162
     };
   register int hval = len;
 
@@ -111,248 +111,260 @@ static const struct fhtoken wordlist[] =
   {
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
-#line 67 "../../src/lib/tokens.gperf"
-    {"MDict",FH_MDICT},
-    {(char*)0, 0},
-#line 66 "../../src/lib/tokens.gperf"
-    {"List",FH_LIST},
-#line 71 "../../src/lib/tokens.gperf"
+#line 73 "../../src/lib/tokens.gperf"
     {"MString",FH_MSTRING},
-#line 122 "../../src/lib/tokens.gperf"
+#line 127 "../../src/lib/tokens.gperf"
     {"UString",FH_USTRING},
-#line 111 "../../src/lib/tokens.gperf"
+#line 115 "../../src/lib/tokens.gperf"
     {"TString",FH_TSTRING},
-#line 61 "../../src/lib/tokens.gperf"
-    {"Layer",FH_LAYER},
-#line 68 "../../src/lib/tokens.gperf"
-    {"MList",FH_MLIST},
-#line 70 "../../src/lib/tokens.gperf"
-    {"MQuickDict",FH_MQUICKDICT},
-#line 79 "../../src/lib/tokens.gperf"
+#line 113 "../../src/lib/tokens.gperf"
+    {"TEffect",FH_TEFFECT},
+#line 59 "../../src/lib/tokens.gperf"
+    {"Halftone",FH_HALFTONE},
+#line 81 "../../src/lib/tokens.gperf"
     {"MultiBlend",FH_MULTIBLEND},
-#line 78 "../../src/lib/tokens.gperf"
-    {"MpObject",FH_MPOBJECT},
+    {(char*)0, 0},
 #line 31 "../../src/lib/tokens.gperf"
     {"ContentFill",FH_CONTENTFILL},
-#line 109 "../../src/lib/tokens.gperf"
-    {"TEffect",FH_TEFFECT},
-#line 113 "../../src/lib/tokens.gperf"
+    {(char*)0, 0},
+#line 117 "../../src/lib/tokens.gperf"
     {"TaperedFill",FH_TAPEREDFILL},
-#line 114 "../../src/lib/tokens.gperf"
+#line 118 "../../src/lib/tokens.gperf"
     {"TaperedFillX",FH_TAPEREDFILLX},
-#line 112 "../../src/lib/tokens.gperf"
+#line 116 "../../src/lib/tokens.gperf"
     {"TabTable",FH_TABTABLE},
 #line 24 "../../src/lib/tokens.gperf"
     {"CharacterFill",FH_CHARACTERFILL},
-#line 45 "../../src/lib/tokens.gperf"
-    {"FWBevelFilter",FH_FWBEVELFILTER},
-#line 65 "../../src/lib/tokens.gperf"
-    {"LinearFill",FH_LINEARFILL},
-#line 72 "../../src/lib/tokens.gperf"
+#line 91 "../../src/lib/tokens.gperf"
+    {"Path",FH_PATH},
+#line 93 "../../src/lib/tokens.gperf"
+    {"PatternFill",FH_PATTERNFILL},
+#line 74 "../../src/lib/tokens.gperf"
     {"MasterPageDocMan",FH_MASTERPAGEDOCMAN},
-#line 73 "../../src/lib/tokens.gperf"
+#line 75 "../../src/lib/tokens.gperf"
     {"MasterPageElement",FH_MASTERPAGEELEMENT},
-#line 53 "../../src/lib/tokens.gperf"
+#line 54 "../../src/lib/tokens.gperf"
     {"FilterAttributeHolder",FH_FILTERATTRIBUTEHOLDER},
-#line 47 "../../src/lib/tokens.gperf"
+#line 48 "../../src/lib/tokens.gperf"
     {"FWFeatherFilter",FH_FWFEATHERFILTER},
+#line 46 "../../src/lib/tokens.gperf"
+    {"FWBevelFilter",FH_FWBEVELFILTER},
+#line 78 "../../src/lib/tokens.gperf"
+    {"MasterPageSymbolClass",FH_MASTERPAGESYMBOLCLASS},
+#line 76 "../../src/lib/tokens.gperf"
+    {"MasterPageLayerElement",FH_MASTERPAGELAYERELEMENT},
+#line 77 "../../src/lib/tokens.gperf"
+    {"MasterPageLayerInstance",FH_MASTERPAGELAYERINSTANCE},
+#line 79 "../../src/lib/tokens.gperf"
+    {"MasterPageSymbolInstance",FH_MASTERPAGESYMBOLINSTANCE},
 #line 27 "../../src/lib/tokens.gperf"
     {"Color6",FH_COLOR6},
-#line 76 "../../src/lib/tokens.gperf"
-    {"MasterPageSymbolClass",FH_MASTERPAGESYMBOLCLASS},
-#line 74 "../../src/lib/tokens.gperf"
-    {"MasterPageLayerElement",FH_MASTERPAGELAYERELEMENT},
-#line 75 "../../src/lib/tokens.gperf"
-    {"MasterPageLayerInstance",FH_MASTERPAGELAYERINSTANCE},
-#line 77 "../../src/lib/tokens.gperf"
-    {"MasterPageSymbolInstance",FH_MASTERPAGESYMBOLINSTANCE},
+#line 119 "../../src/lib/tokens.gperf"
+    {"TextBlok",FH_TEXTBLOK},
+#line 51 "../../src/lib/tokens.gperf"
+    {"FWSharpenFilter",FH_FWSHARPENFILTER},
+#line 92 "../../src/lib/tokens.gperf"
+    {"PathTextLineInfo",FH_PATHTEXTLINEINFO},
 #line 33 "../../src/lib/tokens.gperf"
     {"CustomProc",FH_CUSTOMPROC},
-#line 119 "../../src/lib/tokens.gperf"
+#line 124 "../../src/lib/tokens.gperf"
     {"TintColor",FH_TINTCOLOR},
-#line 120 "../../src/lib/tokens.gperf"
+#line 125 "../../src/lib/tokens.gperf"
     {"TintColor6",FH_TINTCOLOR6},
 #line 32 "../../src/lib/tokens.gperf"
     {"ContourFill",FH_CONTOURFILL},
 #line 29 "../../src/lib/tokens.gperf"
     {"ConeFill",FH_CONEFILL},
+#line 68 "../../src/lib/tokens.gperf"
+    {"List",FH_LIST},
 #line 123 "../../src/lib/tokens.gperf"
-    {"VDict",FH_VDICT},
-#line 118 "../../src/lib/tokens.gperf"
     {"TileFill",FH_TILEFILL},
-#line 80 "../../src/lib/tokens.gperf"
-    {"MultiColorList",FH_MULTICOLORLIST},
-#line 44 "../../src/lib/tokens.gperf"
-    {"FHDocHeader",FH_FHDOCHEADER},
-#line 64 "../../src/lib/tokens.gperf"
-    {"LineTable",FH_LINETABLE},
-#line 50 "../../src/lib/tokens.gperf"
-    {"FWSharpenFilter",FH_FWSHARPENFILTER},
-#line 95 "../../src/lib/tokens.gperf"
-    {"Procedure",FH_PROCEDURE},
-#line 63 "../../src/lib/tokens.gperf"
-    {"LinePat",FH_LINEPAT},
-#line 62 "../../src/lib/tokens.gperf"
-    {"LensFill",FH_LENSFILL},
-#line 19 "../../src/lib/tokens.gperf"
-    {"Brush",FH_BRUSH},
-#line 90 "../../src/lib/tokens.gperf"
-    {"PatternFill",FH_PATTERNFILL},
-#line 23 "../../src/lib/tokens.gperf"
-    {"CalligraphicStroke",FH_CALLIGRAPHICSTROKE},
-#line 91 "../../src/lib/tokens.gperf"
-    {"PatternLine",FH_PATTERNLINE},
-#line 41 "../../src/lib/tokens.gperf"
-    {"Envelope",FH_ENVELOPE},
-#line 15 "../../src/lib/tokens.gperf"
-    {"BasicFill",FH_BASICFILL},
-#line 88 "../../src/lib/tokens.gperf"
-    {"Path",FH_PATH},
-#line 21 "../../src/lib/tokens.gperf"
-    {"BrushStroke",FH_BRUSHSTROKE},
-#line 101 "../../src/lib/tokens.gperf"
-    {"SketchFilter",FH_SKETCHFILTER},
-#line 28 "../../src/lib/tokens.gperf"
-    {"CompositePath",FH_COMPOSITEPATH},
-#line 117 "../../src/lib/tokens.gperf"
-    {"TextInPath",FH_TEXTINPATH},
-#line 26 "../../src/lib/tokens.gperf"
-    {"Collector",FH_COLLECTOR},
-#line 20 "../../src/lib/tokens.gperf"
-    {"BrushList",FH_BRUSHLIST},
-#line 51 "../../src/lib/tokens.gperf"
-    {"Figure",FH_FIGURE},
-#line 49 "../../src/lib/tokens.gperf"
-    {"FWShadowFilter",FH_FWSHADOWFILTER},
-#line 48 "../../src/lib/tokens.gperf"
-    {"FWGlowFilter",FH_FWGLOWFILTER},
-#line 96 "../../src/lib/tokens.gperf"
-    {"PropLst",FH_PROPLST},
-#line 121 "../../src/lib/tokens.gperf"
-    {"TransformFilter",FH_TRANSFORMFILTER},
-#line 116 "../../src/lib/tokens.gperf"
-    {"TextColumn",FH_TEXTCOLUMN},
-#line 94 "../../src/lib/tokens.gperf"
-    {"PolygonFigure",FH_POLYGONFIGURE},
-#line 16 "../../src/lib/tokens.gperf"
-    {"BasicLine",FH_BASICLINE},
-#line 69 "../../src/lib/tokens.gperf"
-    {"MName",FH_MNAME},
-#line 89 "../../src/lib/tokens.gperf"
-    {"PathTextLineInfo",FH_PATHTEXTLINEINFO},
 #line 82 "../../src/lib/tokens.gperf"
-    {"NewContourFill",FH_NEWCONTOURFILL},
-#line 22 "../../src/lib/tokens.gperf"
-    {"BrushTip",FH_BRUSHTIP},
-#line 42 "../../src/lib/tokens.gperf"
-    {"ExpandFilter",FH_EXPANDFILTER},
-#line 102 "../../src/lib/tokens.gperf"
-    {"SpotColor",FH_SPOTCOLOR},
-#line 103 "../../src/lib/tokens.gperf"
-    {"SpotColor6",FH_SPOTCOLOR6},
-#line 93 "../../src/lib/tokens.gperf"
-    {"PerspectiveGrid",FH_PERSPECTIVEGRID},
+    {"MultiColorList",FH_MULTICOLORLIST},
+#line 63 "../../src/lib/tokens.gperf"
+    {"Layer",FH_LAYER},
+#line 89 "../../src/lib/tokens.gperf"
+    {"PantoneColor",FH_PANTONECOLOR},
 #line 34 "../../src/lib/tokens.gperf"
     {"Data",FH_DATA},
-#line 30 "../../src/lib/tokens.gperf"
-    {"ConnectorLine",FH_CONNECTORLINE},
-#line 86 "../../src/lib/tokens.gperf"
-    {"PSLine",FH_PSLINE},
-#line 92 "../../src/lib/tokens.gperf"
-    {"PerspectiveEnvelope",FH_PERSPECTIVEENVELOPE},
-#line 125 "../../src/lib/tokens.gperf"
-    {"Xform",FH_XFORM},
-#line 37 "../../src/lib/tokens.gperf"
+#line 69 "../../src/lib/tokens.gperf"
+    {"MDict",FH_MDICT},
+#line 70 "../../src/lib/tokens.gperf"
+    {"MList",FH_MLIST},
+#line 38 "../../src/lib/tokens.gperf"
     {"DuetFilter",FH_DUETFILTER},
-#line 108 "../../src/lib/tokens.gperf"
-    {"SymbolLibrary",FH_SYMBOLLIBRARY},
+#line 28 "../../src/lib/tokens.gperf"
+    {"CompositePath",FH_COMPOSITEPATH},
 #line 36 "../../src/lib/tokens.gperf"
     {"DateTime",FH_DATETIME},
-#line 40 "../../src/lib/tokens.gperf"
-    {"Element",FH_ELEMENT},
-#line 87 "../../src/lib/tokens.gperf"
-    {"Paragraph",FH_PARAGRAPH},
-#line 35 "../../src/lib/tokens.gperf"
-    {"DataList",FH_DATALIST},
-#line 52 "../../src/lib/tokens.gperf"
-    {"FileDescriptor",FH_FILEDESCRIPTOR},
-#line 38 "../../src/lib/tokens.gperf"
-    {"ElemList",FH_ELEMLIST},
-#line 97 "../../src/lib/tokens.gperf"
-    {"RadialFill",FH_RADIALFILL},
+#line 23 "../../src/lib/tokens.gperf"
+    {"CalligraphicStroke",FH_CALLIGRAPHICSTROKE},
+#line 65 "../../src/lib/tokens.gperf"
+    {"LinePat",FH_LINEPAT},
+#line 72 "../../src/lib/tokens.gperf"
+    {"MQuickDict",FH_MQUICKDICT},
+#line 67 "../../src/lib/tokens.gperf"
+    {"LinearFill",FH_LINEARFILL},
+#line 50 "../../src/lib/tokens.gperf"
+    {"FWShadowFilter",FH_FWSHADOWFILTER},
+#line 94 "../../src/lib/tokens.gperf"
+    {"PatternLine",FH_PATTERNLINE},
+#line 88 "../../src/lib/tokens.gperf"
+    {"PSLine",FH_PSLINE},
+#line 122 "../../src/lib/tokens.gperf"
+    {"TextInPath",FH_TEXTINPATH},
 #line 98 "../../src/lib/tokens.gperf"
-    {"RadialFillX",FH_RADIALFILLX},
-#line 60 "../../src/lib/tokens.gperf"
-    {"ImageImport",FH_IMAGEIMPORT},
-#line 46 "../../src/lib/tokens.gperf"
-    {"FWBlurFilter",FH_FWBLURFILTER},
-#line 59 "../../src/lib/tokens.gperf"
-    {"ImageFill",FH_IMAGEFILL},
-#line 56 "../../src/lib/tokens.gperf"
-    {"Group",FH_GROUP},
-#line 58 "../../src/lib/tokens.gperf"
-    {"Halftone",FH_HALFTONE},
-#line 57 "../../src/lib/tokens.gperf"
-    {"Guides",FH_GUIDES},
-#line 14 "../../src/lib/tokens.gperf"
-    {"AttributeHolder",FH_ATTRIBUTEHOLDER},
-#line 43 "../../src/lib/tokens.gperf"
-    {"Extrusion",FH_EXTRUSION},
-#line 25 "../../src/lib/tokens.gperf"
-    {"ClipGroup",FH_CLIPGROUP},
-#line 110 "../../src/lib/tokens.gperf"
-    {"TFOnPath",FH_TFONPATH},
-#line 17 "../../src/lib/tokens.gperf"
-    {"BendFilter",FH_BENDFILTER},
-#line 104 "../../src/lib/tokens.gperf"
-    {"StylePropLst",FH_STYLEPROPLST},
-#line 106 "../../src/lib/tokens.gperf"
-    {"SymbolClass",FH_SYMBOLCLASS},
-#line 84 "../../src/lib/tokens.gperf"
-    {"OpacityFilter",FH_OPACITYFILTER},
+    {"Procedure",FH_PROCEDURE},
+#line 19 "../../src/lib/tokens.gperf"
+    {"Brush",FH_BRUSH},
+#line 100 "../../src/lib/tokens.gperf"
+    {"PropLst",FH_PROPLST},
 #line 99 "../../src/lib/tokens.gperf"
-    {"RaggedFilter",FH_RAGGEDFILTER},
-#line 83 "../../src/lib/tokens.gperf"
-    {"NewRadialFill",FH_NEWRADIALFILL},
+    {"ProcessColor",FH_PROCESSCOLOR},
+#line 90 "../../src/lib/tokens.gperf"
+    {"Paragraph",FH_PARAGRAPH},
+#line 26 "../../src/lib/tokens.gperf"
+    {"Collector",FH_COLLECTOR},
+#line 42 "../../src/lib/tokens.gperf"
+    {"Envelope",FH_ENVELOPE},
+#line 21 "../../src/lib/tokens.gperf"
+    {"BrushStroke",FH_BRUSHSTROKE},
+#line 71 "../../src/lib/tokens.gperf"
+    {"MName",FH_MNAME},
+#line 49 "../../src/lib/tokens.gperf"
+    {"FWGlowFilter",FH_FWGLOWFILTER},
 #line 18 "../../src/lib/tokens.gperf"
     {"Block",FH_BLOCK},
-#line 54 "../../src/lib/tokens.gperf"
-    {"GradientMaskFilter",FH_GRADIENTMASKFILTER},
-#line 55 "../../src/lib/tokens.gperf"
+#line 114 "../../src/lib/tokens.gperf"
+    {"TFOnPath",FH_TFONPATH},
+#line 106 "../../src/lib/tokens.gperf"
+    {"SpotColor",FH_SPOTCOLOR},
+#line 107 "../../src/lib/tokens.gperf"
+    {"SpotColor6",FH_SPOTCOLOR6},
+#line 62 "../../src/lib/tokens.gperf"
+    {"Import",FH_IMPORT},
+#line 22 "../../src/lib/tokens.gperf"
+    {"BrushTip",FH_BRUSHTIP},
+#line 96 "../../src/lib/tokens.gperf"
+    {"PerspectiveGrid",FH_PERSPECTIVEGRID},
+#line 52 "../../src/lib/tokens.gperf"
+    {"Figure",FH_FIGURE},
+#line 66 "../../src/lib/tokens.gperf"
+    {"LineTable",FH_LINETABLE},
+#line 121 "../../src/lib/tokens.gperf"
+    {"TextEffs",FH_TEXTEFFS},
+#line 95 "../../src/lib/tokens.gperf"
+    {"PerspectiveEnvelope",FH_PERSPECTIVEENVELOPE},
+#line 120 "../../src/lib/tokens.gperf"
+    {"TextColumn",FH_TEXTCOLUMN},
+#line 17 "../../src/lib/tokens.gperf"
+    {"BendFilter",FH_BENDFILTER},
+#line 15 "../../src/lib/tokens.gperf"
+    {"BasicFill",FH_BASICFILL},
+#line 14 "../../src/lib/tokens.gperf"
+    {"AttributeHolder",FH_ATTRIBUTEHOLDER},
+#line 30 "../../src/lib/tokens.gperf"
+    {"ConnectorLine",FH_CONNECTORLINE},
+#line 45 "../../src/lib/tokens.gperf"
+    {"FHDocHeader",FH_FHDOCHEADER},
+#line 35 "../../src/lib/tokens.gperf"
+    {"DataList",FH_DATALIST},
+#line 43 "../../src/lib/tokens.gperf"
+    {"ExpandFilter",FH_EXPANDFILTER},
+#line 37 "../../src/lib/tokens.gperf"
+    {"DisplayText",FH_DISPLAYTEXT},
+#line 101 "../../src/lib/tokens.gperf"
+    {"RadialFill",FH_RADIALFILL},
+#line 102 "../../src/lib/tokens.gperf"
+    {"RadialFillX",FH_RADIALFILLX},
+#line 105 "../../src/lib/tokens.gperf"
+    {"SketchFilter",FH_SKETCHFILTER},
+#line 84 "../../src/lib/tokens.gperf"
+    {"NewContourFill",FH_NEWCONTOURFILL},
+#line 112 "../../src/lib/tokens.gperf"
+    {"SymbolLibrary",FH_SYMBOLLIBRARY},
+#line 56 "../../src/lib/tokens.gperf"
     {"GraphicStyle",FH_GRAPHICSTYLE},
-#line 100 "../../src/lib/tokens.gperf"
-    {"Rectangle",FH_RECTANGLE},
+#line 41 "../../src/lib/tokens.gperf"
+    {"Element",FH_ELEMENT},
+#line 53 "../../src/lib/tokens.gperf"
+    {"FileDescriptor",FH_FILEDESCRIPTOR},
+#line 61 "../../src/lib/tokens.gperf"
+    {"ImageImport",FH_IMAGEIMPORT},
+#line 16 "../../src/lib/tokens.gperf"
+    {"BasicLine",FH_BASICLINE},
+#line 58 "../../src/lib/tokens.gperf"
+    {"Guides",FH_GUIDES},
+#line 87 "../../src/lib/tokens.gperf"
+    {"Oval",FH_OVAL},
+#line 128 "../../src/lib/tokens.gperf"
+    {"VDict",FH_VDICT},
 #line 11 "../../src/lib/tokens.gperf"
     {"AGDFont",FH_AGDFONT},
+#line 126 "../../src/lib/tokens.gperf"
+    {"TransformFilter",FH_TRANSFORMFILTER},
+#line 108 "../../src/lib/tokens.gperf"
+    {"StylePropLst",FH_STYLEPROPLST},
+#line 97 "../../src/lib/tokens.gperf"
+    {"PolygonFigure",FH_POLYGONFIGURE},
+#line 80 "../../src/lib/tokens.gperf"
+    {"MpObject",FH_MPOBJECT},
+#line 20 "../../src/lib/tokens.gperf"
+    {"BrushList",FH_BRUSHLIST},
+#line 130 "../../src/lib/tokens.gperf"
+    {"Xform",FH_XFORM},
+#line 57 "../../src/lib/tokens.gperf"
+    {"Group",FH_GROUP},
+#line 55 "../../src/lib/tokens.gperf"
+    {"GradientMaskFilter",FH_GRADIENTMASKFILTER},
+#line 47 "../../src/lib/tokens.gperf"
+    {"FWBlurFilter",FH_FWBLURFILTER},
+#line 60 "../../src/lib/tokens.gperf"
+    {"ImageFill",FH_IMAGEFILL},
+#line 25 "../../src/lib/tokens.gperf"
+    {"ClipGroup",FH_CLIPGROUP},
+#line 104 "../../src/lib/tokens.gperf"
+    {"Rectangle",FH_RECTANGLE},
+#line 40 "../../src/lib/tokens.gperf"
+    {"ElemPropLst",FH_ELEMPROPLST},
     {(char*)0, 0},
-#line 115 "../../src/lib/tokens.gperf"
-    {"TextBlok",FH_TEXTBLOK},
-#line 85 "../../src/lib/tokens.gperf"
-    {"Oval",FH_OVAL},
-    {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
+#line 64 "../../src/lib/tokens.gperf"
+    {"LensFill",FH_LENSFILL},
+#line 110 "../../src/lib/tokens.gperf"
+    {"SymbolClass",FH_SYMBOLCLASS},
+#line 103 "../../src/lib/tokens.gperf"
+    {"RaggedFilter",FH_RAGGEDFILTER},
     {(char*)0, 0}, {(char*)0, 0},
-#line 107 "../../src/lib/tokens.gperf"
+#line 85 "../../src/lib/tokens.gperf"
+    {"NewRadialFill",FH_NEWRADIALFILL},
+    {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
+#line 86 "../../src/lib/tokens.gperf"
+    {"OpacityFilter",FH_OPACITYFILTER},
+#line 13 "../../src/lib/tokens.gperf"
+    {"ArrowPath",FH_ARROWPATH},
+    {(char*)0, 0},
+#line 44 "../../src/lib/tokens.gperf"
+    {"Extrusion",FH_EXTRUSION},
+    {(char*)0, 0},
+#line 39 "../../src/lib/tokens.gperf"
+    {"ElemList",FH_ELEMLIST},
+#line 83 "../../src/lib/tokens.gperf"
+    {"NewBlend",FH_NEWBLEND},
+    {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
+#line 111 "../../src/lib/tokens.gperf"
     {"SymbolInstance",FH_SYMBOLINSTANCE},
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
-#line 124 "../../src/lib/tokens.gperf"
+#line 129 "../../src/lib/tokens.gperf"
     {"VMpObj",FH_VMPOBJ},
     {(char*)0, 0},
-#line 81 "../../src/lib/tokens.gperf"
-    {"NewBlend",FH_NEWBLEND},
-#line 13 "../../src/lib/tokens.gperf"
-    {"ArrowPath",FH_ARROWPATH},
-    {(char*)0, 0}, {(char*)0, 0},
-#line 12 "../../src/lib/tokens.gperf"
-    {"AGDSelection",FH_AGDSELECTION},
-    {(char*)0, 0}, {(char*)0, 0},
-#line 39 "../../src/lib/tokens.gperf"
-    {"ElemPropLst",FH_ELEMPROPLST},
+#line 109 "../../src/lib/tokens.gperf"
+    {"SwfImport",FH_SWFIMPORT},
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
     {(char*)0, 0}, {(char*)0, 0}, {(char*)0, 0},
-#line 105 "../../src/lib/tokens.gperf"
-    {"SwfImport",FH_SWFIMPORT}
+#line 12 "../../src/lib/tokens.gperf"
+    {"AGDSelection",FH_AGDSELECTION}
   };
 
 const struct fhtoken *
@@ -372,5 +384,5 @@ Perfect_Hash::in_word_set (register const char *str, register unsigned int len)
     }
   return 0;
 }
-#line 126 "../../src/lib/tokens.gperf"
+#line 131 "../../src/lib/tokens.gperf"
 

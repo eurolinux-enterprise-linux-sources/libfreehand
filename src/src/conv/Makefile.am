@@ -1,2 +1,5 @@
-SUBDIRS = raw svg
+if BUILD_TOOLS
 
+SUBDIRS = raw svg text
+
+endif

@@ -11,7 +11,7 @@
 #define __FHPATH_H__
 
 #include <vector>
-#include <libwpd/libwpd.h>
+#include <librevenge/librevenge.h>
 
 namespace libfreehand
 {
@@ -23,16 +23,19 @@ class FHPathElement
 public:
   FHPathElement() {}
   virtual ~FHPathElement() {}
-  virtual void writeOut(WPXPropertyListVector &vec) const = 0;
+  virtual void writeOut(librevenge::RVNGPropertyListVector &vec) const = 0;
   virtual void transform(const FHTransform &trafo) = 0;
   virtual FHPathElement *clone() = 0;
+  virtual void getBoundingBox(double x0, double y0, double &px, double &py, double &qx, double &qy) const = 0;
+  virtual double getX() const = 0;
+  virtual double getY() const = 0;
 };
 
 
 class FHPath : public FHPathElement
 {
 public:
-  FHPath() : m_elements(), m_isClosed(false) {}
+  FHPath() : m_elements(), m_isClosed(false), m_xFormId(0), m_graphicStyleId(0), m_evenOdd(false) {}
   FHPath(const FHPath &path);
   ~FHPath();
 
@@ -45,18 +48,31 @@ public:
   void appendArcTo(double rx, double ry, double rotation, bool longAngle, bool sweep, double x, double y);
   void appendClosePath();
   void appendPath(const FHPath &path);
+  void setXFormId(unsigned xFormId);
+  void setGraphicStyleId(unsigned graphicStyleId);
+  void setEvenOdd(bool evenOdd);
 
-  void writeOut(WPXPropertyListVector &vec) const;
+  void writeOut(librevenge::RVNGPropertyListVector &vec) const;
   void transform(const FHTransform &trafo);
   FHPathElement *clone();
+  void getBoundingBox(double x0, double y0, double &xmin, double &ymin, double &xmax, double &ymax) const;
+  double getX() const;
+  double getY() const;
 
   void clear();
   bool empty() const;
   bool isClosed() const;
+  unsigned getXFormId() const;
+  unsigned getGraphicStyleId() const;
+  bool getEvenOdd() const;
+  void getBoundingBox(double &xmin, double &ymin, double &xmax, double &ymax) const;
 
 private:
   std::vector<FHPathElement *> m_elements;
   bool m_isClosed;
+  unsigned m_xFormId;
+  unsigned m_graphicStyleId;
+  bool m_evenOdd;
 };
 
 } // namespace libfreehand

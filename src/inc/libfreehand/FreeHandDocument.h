@@ -10,11 +10,21 @@
 #ifndef __FREEHANDDOCUMENT_H__
 #define __FREEHANDDOCUMENT_H__
 
-#include <libwpd/libwpd.h>
-#include <libwpg/libwpg.h>
-#include "FHStringVector.h"
+#include <librevenge/librevenge.h>
 
-class WPXInputStream;
+#ifdef DLL_EXPORT
+#ifdef LIBFREEHAND_BUILD
+#define FHAPI __declspec(dllexport)
+#else
+#define FHAPI __declspec(dllimport)
+#endif
+#else // !DLL_EXPORT
+#ifdef LIBFREEHAND_VISIBILITY
+#define FHAPI __attribute__((visibility("default")))
+#else
+#define FHAPI
+#endif
+#endif
 
 namespace libfreehand
 {
@@ -22,11 +32,9 @@ class FreeHandDocument
 {
 public:
 
-  static bool isSupported(WPXInputStream *input);
+  static FHAPI bool isSupported(librevenge::RVNGInputStream *input);
 
-  static bool parse(WPXInputStream *input, libwpg::WPGPaintInterface *painter);
-
-  static bool generateSVG(::WPXInputStream *input, FHStringVector &output);
+  static FHAPI bool parse(librevenge::RVNGInputStream *input, librevenge::RVNGDrawingInterface *painter);
 };
 
 } // namespace libfreehand

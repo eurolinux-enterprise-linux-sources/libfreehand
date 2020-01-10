@@ -7,11 +7,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#include <iostream>
-#include <sstream>
 #include <stdio.h>
 #include <string.h>
+
 #include <librevenge-stream/librevenge-stream.h>
+#include <librevenge-generators/librevenge-generators.h>
 #include <librevenge/librevenge.h>
 #include <libfreehand/libfreehand.h>
 
@@ -20,7 +20,7 @@ namespace
 
 int printUsage()
 {
-  printf("Usage: fh2svg [OPTION] <FreeHand Document>\n");
+  printf("Usage: fh2text [OPTION] <FreeHand Document>\n");
   printf("\n");
   printf("Options:\n");
   printf("--help                Shows this help message\n");
@@ -51,29 +51,22 @@ int main(int argc, char *argv[])
 
   if (!libfreehand::FreeHandDocument::isSupported(&input))
   {
-    std::cerr << "ERROR: Unsupported file format!" << std::endl;
+    fprintf(stderr, "ERROR: Unsupported file format (unsupported version) or file is encrypted!\n");
     return 1;
   }
 
-  librevenge::RVNGStringVector output;
-  librevenge::RVNGSVGDrawingGenerator generator(output, "");
-  if (!libfreehand::FreeHandDocument::parse(&input, &generator))
+  librevenge::RVNGStringVector pages;
+  librevenge::RVNGTextDrawingGenerator painter(pages);
+  if (!libfreehand::FreeHandDocument::parse(&input, &painter))
   {
-    std::cerr << "ERROR: SVG Generation failed!" << std::endl;
-    return 1;
-  }
-  if (output.empty() || output[0].empty())
-  {
-    std::cerr << "ERROR: No SVG document generated!" << std::endl;
+    fprintf(stderr, "ERROR: Parsing of document failed!\n");
     return 1;
   }
 
-  std::cout << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n";
-  std::cout << "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"";
-  std::cout << " \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
-
-  std::cout << output[0].cstr() << std::endl;
+  for (unsigned i = 0; i != pages.size(); ++i)
+    printf("%s", pages[i].cstr());
 
   return 0;
 }
+
 /* vim:set shiftwidth=2 softtabstop=2 expandtab: */

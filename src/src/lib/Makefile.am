@@ -8,16 +8,27 @@ lib_LTLIBRARIES = libfreehand-@FH_MAJOR_VERSION@.@FH_MINOR_VERSION@.la
 libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_includedir = $(includedir)/libfreehand-@FH_MAJOR_VERSION@.@FH_MINOR_VERSION@/libfreehand
 libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_include_HEADERS = \
 	$(top_srcdir)/inc/libfreehand/libfreehand.h \
-	$(top_srcdir)/inc/libfreehand/FreeHandDocument.h \
-	$(top_srcdir)/inc/libfreehand/FHStringVector.h
+	$(top_srcdir)/inc/libfreehand/FreeHandDocument.h
 
-AM_CXXFLAGS = -I$(top_srcdir)/inc $(WPD_CFLAGS) $(WPG_CFLAGS) $(ZLIB_CFLAGS) $(DEBUG_CXXFLAGS)
+AM_CXXFLAGS = \
+	-DLIBFREEHAND_BUILD=1 \
+	-I$(top_srcdir)/inc \
+	$(REVENGE_CFLAGS) \
+	$(ZLIB_CFLAGS) \
+	$(ICU_CFLAGS) \
+	$(LCMS2_CFLAGS) \
+	$(DEBUG_CXXFLAGS)
 
 generated_files = \
 	$(top_builddir)/src/lib/tokens.h \
 	$(top_builddir)/src/lib/tokenhash.h
 
-libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_la_LIBADD  = $(WPD_LIBS) $(ZLIB_LIBS) @LIBFREEHAND_WIN32_RESOURCE@
+libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_la_LIBADD = \
+	$(REVENGE_LIBS) \
+	$(ZLIB_LIBS) \
+	$(LCMS2_LIBS) \
+	@LIBFREEHAND_WIN32_RESOURCE@
+
 libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_la_DEPENDENCIES = @LIBFREEHAND_WIN32_RESOURCE@
 libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_la_LDFLAGS = $(version_info) -export-dynamic -no-undefined
 libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_la_SOURCES = \
@@ -26,15 +37,14 @@ libfreehand_@FH_MAJOR_VERSION@_@FH_MINOR_VERSION@_la_SOURCES = \
 	FHInternalStream.cpp \
 	FHParser.cpp \
 	FHPath.cpp \
-	FHStringVector.cpp \
-	FHSVGGenerator.cpp \
 	FHTransform.cpp \
 	libfreehand_utils.cpp \
 	FHCollector.h \
+	FHColorProfiles.h \
+	FHConstants.h \
 	FHInternalStream.h \
 	FHParser.h \
 	FHPath.h \
-	FHSVGGenerator.h \
 	FHTransform.h \
 	FHTypes.h \
 	libfreehand_utils.h \
@@ -46,7 +56,7 @@ $(top_builddir)/src/lib/tokens.h : $(top_builddir)/src/lib/tokens.gperf
 
 $(top_builddir)/src/lib/tokenhash.h : $(top_builddir)/src/lib/tokens.gperf
 	$(GPERF) --compare-strncmp -C -m 20 $(top_builddir)/src/lib/tokens.gperf \
-		| $(SED) -e "s/(char\*)0/(char\*)0, 0/g" > $(top_builddir)/src/lib/tokenhash.h
+		| $(SED) -e 's/(char\*)0/(char\*)0, 0/g' > $(top_builddir)/src/lib/tokenhash.h
 
 $(top_builddir)/src/lib/tokens.gperf : $(top_srcdir)/src/lib/tokens.txt gentoken.pl
 	perl $(top_srcdir)/src/lib/gentoken.pl $(top_srcdir)/src/lib/tokens.txt \
