@@ -1,0 +1,359 @@
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [0bc4a498e03e4fdbcb04d8ac2083c9e0fdfdbcab]
+
+	Some more things that don't matter
+
+
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [4d8fbbf5db7f921022675adc1d509ae230c6272f]
+
+	Stub parseDocument which will parse the document in a non-linear way
+
+
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f8d29bc74ca05f364f38487f8dc044b9ef5e5c54]
+
+	Rename and simplify some stuff
+
+
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [dcbfd22e84231cb75d994e7d4da0b400ee80c60d]
+
+	Collect offsets only once
+
+
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8d9c44c2634b7938025a127a53ccc826fd6e33af]
+
+	Remove need of full two passes
+
+
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9f0854c03ea6b500c9d426bfefd95608ed394607]
+
+	Some more refactoring
+
+
+2013-10-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e6087618936108e0b495e1d5c3e7179453543904]
+
+	Some little refactoring
+
+
+2013-10-19  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [8942c3589054b12d6223d503c36773419be8bdfd]
+
+	C++ ain't Python :P
+
+
+2013-10-19  Valek Filippov  <frob@df.ru>  [d7b9aee4e132d890bc94eedf473fd52135c8c913]
+
+	Fix read for ImageImport, TaperedFill, TaperedFillX
+
+
+2013-10-19  David Tardon  <dtardon@redhat.com>  [6e27b05f7ac50f6b4d538cb3c14c738d3aae9848]
+
+	init members
+
+
+2013-10-18  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a1c7691fc0185e2fb49bb34e0579d1f4c2c697ba]
+
+	Handle documents with several "pages"
+
+
+2013-10-18  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ff0cf65f11630c3f2279ec547f07facbbe0319cc]
+
+	Don't crash on null collector
+
+
+2013-10-18  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a16194b88fa478039b0b34941792d32ea215d0cd]
+
+	Keep information about FHTail offset
+
+
+2013-10-16  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [755c6213f5509e92eef3ecefeebe08c7340a8e97]
+
+	Keep offsets for different records within the file + FHTail reader function
+
+
+2013-10-16  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2b85aa61b03a8adcc50c5e59cb25e94ab4cdec74]
+
+	Fix ImageImport for version >8
+
+
+2013-10-16  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3ca9c8706a1931999231587febdd469ebb8b2db1]
+
+	Small fixes for version 5 and 7
+
+
+2013-10-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6f2464d182e17f1aea80a505618e49eb94718720]
+
+	PolygonFigure
+
+
+2013-10-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3aa9e9821b78b67a7afb6e4a3032766e5a41f58b]
+
+	Rectangles and Ovales
+
+
+2013-10-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d70de881d21a3fb516c838e0d7dd4472e5b2fec2]
+
+	enable werror by default again
+
+
+2013-10-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3196a4df8789a478bc5cd4d0cef74b0d7ea453cf]
+
+	Use the FHPath class for the path reading and processing
+
+
+2013-10-15  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [67e13ce3e400092a0586d092de0dde70026ed1f7]
+
+	Add FHPath class
+
+
+2013-10-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6f6f7459e1da577fb5a5d0209186eee13781e501]
+
+	Remove some warnings
+
+
+2013-10-14  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d80b73abf12910e1d0f871ad1eb76c79cb4142f6]
+
+	Some else branches
+
+
+2013-10-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [4ed82f993a80ac07316dc27874c380975a0b814d]
+
+	Correct Page Start X/Y
+
+
+2013-10-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2fe8bfe2f9ffffa608584232c2f8953e9d64f968]
+
+	Unused include
+
+
+2013-10-13  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5559342cd5e3babc7df8a06b2e125e924d5ab7bc]
+
+	fh2xhtm->fh2svg + read page width/height/offsetX/offsetY
+
+
+2013-10-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a33cb389154b8a76ee31751793de09f75b143f97]
+
+	Clone a part of FHTransform from libcdr
+
+
+2013-10-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6a7cb44730e66542cef5e7f636ce0e60a470c2be]
+
+	Don't fail make install if docs are not built
+
+
+2013-10-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [761513e8bf3e167cd287cbddc5c87c8aad1621b9]
+
+	Set infrastructure for 2 passes
+
+
+2013-10-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ea6b54bfb588eef7e407b9d3aab4ec0c72b1e839]
+
+	collector stub for rectangle
+
+
+2013-10-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [44899fb5044cfb494e75ddc47ce0be3a63c4ad6e]
+
+	Parse and pass on the oval
+
+
+2013-10-11  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [38fd94e9d886106e9f203f149df5d49f36f43d54]
+
+	Parsing xform
+
+
+2013-10-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [70cad391b42a71a9ad5f3021cde7db6509ed0cfa]
+
+	Consider the closed/evenOdd flag
+
+
+2013-10-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7607eb26b7ad12d113243c5c7852ae8f0c135e7b]
+
+	No static tools option
+
+
+2013-10-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e61099d4805ab0b5d67aa5b10c0f08b96f422735]
+
+	Trying to skip what skipped can be
+
+
+2013-10-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6c9781b9df70513c149aeed48382ed07fc550581]
+
+	Some more work on the parser
+
+
+2013-10-09  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ad6615d348106606d5e81a2a1cb4928648194d72]
+
+	Fix tokenid generation
+
+
+2013-10-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2a856793a591444ec1083dcf7610645f9d4c9f12]
+
+	Try to guard the path reading by try...catch blocks
+
+
+2013-10-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1658cbc6ca7db93f50b1c7aa512389d9ed076ad3]
+
+	First wireframes
+
+
+2013-10-07  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [4c78a7c9de281481f71f2a5c215d7455a1a52e4f]
+
+	Remove warning
+
+
+2013-10-07  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [e8e386d8259cc1c3b647dce16519576dc4361ec2]
+
+	Function to read coordinates
+
+
+2013-10-07  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [987970b3a25dbacd2b14b20050330c91a5de6ef6]
+
+	Starting to try to extract some shapes from freehand
+
+
+2013-05-10  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7bd16b3678599463d49adabc032f7e7b66f2a85c]
+
+	Making Michael Stahl happy (even in libfreehand)
+
+
+2013-05-02  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [f4c51375ead46fac730eb93404d3796a6361543e]
+
+	libwpd already does this conversion, so don't dupplicate
+
+
+2013-04-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d72db34412c5a52cd2067feaf7bf0a97c910c998]
+
+	Make this Fridrich-less
+
+
+2013-04-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [234d8116129ebced92cf0a778dac07846981a2c3]
+
+	skip correctly records of lizard.FH10
+
+
+2013-04-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [58bd1ff1ac50d5f4f65645945bb840f9eb0ef0cb]
+
+	Two more reader functions
+
+
+2013-04-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [87a71376758abf25e37fb735fdffe0f0a5e37b05]
+
+	Fix readVMpObj and readAGDFont
+
+
+2013-04-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [855465fea1a3c4fd38f465237671cffa2430ca88]
+
+	Token ID 0 is special in the way the hash handles it
+
+
+2013-04-26  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [780c55925e7d6fc03fa1567b89bbe0a816461389]
+
+	Work in progress on the parsers
+
+
+2013-04-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d73d198bdffa62f3d4ff15d7d9cf0c1bea66d1cb]
+
+	Starting slowly with functions skipping the right amount of data
+
+
+2013-04-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [39c64ae8c06238c6b93d5b767a1109ddab66683c]
+
+	ignore ar-lib
+
+
+2013-04-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [a1f805fc9e76f9a57f11fcfcec6eeeaf33883173]
+
+	Some sane defaults for the build
+
+
+2013-04-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [6a40dbec106c926bf4c66b6cedf748d45a60c724]
+
+	Some more verbosity in debug mode
+
+
+2013-04-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [c2073286e2201e874cb390ceae21db4770c054ec]
+
+	Better to know which number of record we are parsing
+
+
+2013-04-25  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ec68e16f108b0838d18181c376ec3af6f1f869f7]
+
+	Simplifying the licensing a tad for this new library
+
+
+2013-04-24  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d81b939ebb34961106c987b0f68e6ed197bb7374]
+
+	Stub the data parsing some more
+
+
+2013-04-24  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3f7bde88d07157f7921c308dead402888540e66c]
+
+	Allow overriding of gperf detection by user
+
+
+2013-04-23  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [d6197943e8ac36b5b43a577a9660adaf9474477c]
+
+	ignore generated files
+
+
+2013-04-23  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5523b41472113e851a1a6691643c7ab343fe67b2]
+
+	Store the dictionary entries as integers
+
+
+2013-04-22  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1191e29a85013750d555e0ef8dc9eba7566356d4]
+
+	oops
+
+
+2013-04-22  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [c46951fb273b28e1a46987cd660408ceb6455b32]
+
+	Stub data reader functions
+
+
+2013-04-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5a805c74e9c82ddb3276e868c03d950cfe43db85]
+
+	Forgot to git add these ones
+
+
+2013-04-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [7a303e12f755a4419ee96e025659de9560772807]
+
+	inflate data stream and stub its parsing
+
+
+2013-04-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [44c55b9feb1a1a4c1ad6596c7618b5d2c33d17b7]
+
+	Detect a Freehand document and start to parse it
+
+
+2013-04-21  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [41462611457839cd4e6d07366432cb1a2e1d1b53]
+
+	Whitespace change
+
+
+2013-04-20  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [9cef5f4e7f4b60ca8e4b6511b13b3ec9fe138c94]
+
+	Some build fixes
+
+
+2013-01-18  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [32abf45c3d04d7a86a810e0362e0d3d77febffdf]
+
+	Fix build with newer autotools
+
+
+2012-10-06  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [ebfeec71304580f7e19023a89fa9e4401b1253aa]
+
+	Version correction in msvc files
+
+
+2012-08-28  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [081799dce92759abee6d38196bb6f836ea9a9e1b]
+
+	remove files that nobody uses anymore
+
+
+2012-08-28  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [560ba9162e9c0e71fbe42be000588d96093781f7]
+
+	Initial content of libfreehand
+
+
+2012-08-28  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [3585e292a31c674ff055178fb7449d1992d6c932]
+
+	initial libfreehand repository
+
